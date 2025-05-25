@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Misconfiguration - Demo Interativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #c0392b;
+    }
+    .example {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-left: 5px solid #c0392b;
+      background: #fff3f3;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #a93226;
+    }
+    .hidden-info {
+      display: none;
+      margin-top: 1rem;
+      background: #eaf2f8;
+      padding: 1rem;
+      border-left: 5px solid #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exemplo Interativo: Security Misconfiguration</h1>
+    <p>
+      Esta aplicação simples demonstra uma falha comum de configuração de segurança: a exposição de informações sensíveis devido a mensagens de erro detalhadas ou configurações padrão mal gerenciadas.
+    </p>
+
+    <div class="example">
+      <strong>Simulação:</strong> Suponha que um usuário digite uma URL incorreta ou tente acessar um recurso que não existe.<br>
+      <button onclick="mostrarErro()">Simular Erro de Aplicação</button>
+      <div id="errorBox" class="hidden-info">
+        <strong>Erro 500 - Internal Server Error</strong><br>
+        Detalhes: NullReferenceException em App.Controllers.LoginController.Line:42<br>
+        Stack Trace: at App.Controllers.LoginController.Login(User user)...<br>
+        Versão do Servidor: Apache 2.4.49 - Ubuntu 20.04<br>
+        <em>Isso é um exemplo de má configuração: nunca exiba essas informações em produção!</em>
+      </div>
+    </div>
+
+    <div class="example">
+      <strong>Boa prática:</strong> Mensagem genérica e segura.
+      <button onclick="mostrarMensagemSegura()">Mostrar Mensagem Segura</button>
+      <div id="secureBox" class="hidden-info">
+        <strong>Erro:</strong> Algo deu errado. Por favor, tente novamente mais tarde.<br>
+        <em>Esta é a abordagem recomendada, pois não expõe informações técnicas ao usuário.</em>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarErro() {
+      document.getElementById("errorBox").style.display = "block";
+    }
+
+    function mostrarMensagemSegura() {
+      document.getElementById("secureBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>
