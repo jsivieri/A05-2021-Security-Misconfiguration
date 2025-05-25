@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Misconfiguration - Demonstração Educacional</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f7;
+      color: #2c3e50;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #c0392b;
+    }
+    .example {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      border-left: 5px solid #c0392b;
+      background: #fff3f3;
+    }
+    .secure-example {
+      border-left-color: #27ae60;
+      background: #f0fff4;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      background: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #a93226;
+    }
+    .hidden-info {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 4px solid #2980b9;
+      background: #eaf2f8;
+    }
+    .info {
+      margin-top: 2rem;
+      background: #fcf8e3;
+      border-left: 5px solid #f39c12;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Demonstração Interativa: OWASP A05 - Security Misconfiguration</h1>
+    <p>
+      Este exemplo interativo demonstra falhas comuns de configuração de segurança e como tratá-las corretamente.
+    </p>
+
+    <div class="example">
+      <strong>Simulação Insegura:</strong>
+      <p>Erro técnico detalhado visível ao usuário final.</p>
+      <button onclick="mostrarErro()">Mostrar Erro Técnico</button>
+      <div id="errorBox" class="hidden-info">
+        <strong>Erro 500 - Internal Server Error</strong><br>
+        Detalhes: NullReferenceException at App.Controllers.LoginController.Line:42<br>
+        Stack Trace: at App.Controllers.LoginController.Login(User user)<br>
+        Banco de Dados: usuários_test
+        <br>Usuários encontrados:<br>
+        - joao / 12345678<br>
+        - lucas / 12345678<br>
+        - marcos / 12345678<br>
+        - admin / 12345678<br>
+        Servidor: Apache/2.4.49 (Ubuntu 20.04)<br>
+        PHP Version: 7.4.3<br>
+        <em>⚠️ Essas informações não devem ser expostas ao usuário!</em>
+      </div>
+    </div>
+
+    <div class="example secure-example">
+      <strong>Simulação Segura:</strong>
+      <p>Mensagem de erro genérica que protege a aplicação.</p>
+      <button onclick="mostrarMensagemSegura()">Mostrar Mensagem Segura</button>
+      <div id="secureBox" class="hidden-info">
+        <strong>Erro:</strong> Algo deu errado. Por favor, tente novamente mais tarde.<br>
+        <em>✅ Nenhuma informação sensível é revelada.</em>
+      </div>
+    </div>
+
+
+
+  <script>
+    function mostrarErro() {
+      document.getElementById("errorBox").style.display = "block";
+    }
+
+    function mostrarMensagemSegura() {
+      document.getElementById("secureBox").style.display = "block";
+    }
+  </script>
+</body>
+</html>
